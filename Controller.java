@@ -1,6 +1,7 @@
-package ch.P4;
+package ch.P1;
 
 import java.util.Optional;
+import java.util.Random;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 
-public class Controller {
+public class Controller implements ViewController{
 	
 	@FXML protected Line line1;
 	@FXML protected Line line2;
@@ -27,48 +29,47 @@ public class Controller {
 	@FXML protected Line line10;
 	@FXML protected Label label1;
 	@FXML protected Label label2;
+	@FXML protected Button start;
 	
 	int i = 0;
 	int k = 10;
+	int s = 0;
+	int t = 0;
 	String b = "";
+	String text = "";
+	public String word;
+	public boolean line = false;
 	
+	public Controller(){
+		String[] words = {"writer", "that", "program"};
+        int random = new Random().nextInt(words.length);
+        word = (words[random]);
+        System.out.println(word);
+	}
+	
+	@FXML
+	public void start(ActionEvent event){
+		label1.setText(text);
+		start.setVisible(false);
+		}
 	@FXML
 	public void pruefen(ActionEvent event){
 		Button btn = (Button) event.getSource();
-		b = b+btn.getText();
+		b = btn.getText();
 		btn.setVisible(false);
-		label1.setText(b);
 		
-		i++;
-		if(i==1){
-			((Node) line1).setVisible(true);
-		}else if(i==2){
-			((Node) line2).setVisible(true);
-		}else if(i==3){
-			((Node) line3).setVisible(true);
-		}else if(i==4){
-			((Node) line4).setVisible(true);
-		}else if(i==5){
-			line5.setVisible(true);
-		}else if(i==6){
-			((Node) line6).setVisible(true);
-		}else if(i==7){
-			((Node) line7).setVisible(true);
-		}else if(i==8){
-			((Node) line8).setVisible(true);
-		}else if(i==9){
-			((Node) line9).setVisible(true);
-		}else if(i==10){
-			((Node) line10).setVisible(true);
+		for(int p = 0; p < word.length(); p++){
+			if(b.charAt(0)+32 == word.charAt(p)){
+				System.out.println("yes");
+				line = true;
+				s++;
+			}
 		}
-		k--;
-		if(k==0){
-			label2.setText("You are dead");
-		}else if(k==-1){
+		if(s==word.length()){
 			Alert alert = new Alert(AlertType.CONFIRMATION);
 			alert.setTitle("Restart");
-			alert.setHeaderText("Do you want to Restart?");
-			alert.setContentText("Choose your option.");
+			alert.setHeaderText("You won! Do you want to Restart?");
+			alert.setContentText("The word was: "+ word);
 
 			ButtonType buttonTypeOne = new ButtonType("YES");
 			ButtonType buttonTypeTwo = new ButtonType("NO");
@@ -78,16 +79,75 @@ public class Controller {
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == buttonTypeOne){
 			    //restart Fehlt
+				
 				return;
 			} else if (result.get() == buttonTypeTwo) {
 				System.exit(0);
 			}
-		}else{
-			label2.setText("Trys Left: "+k);
 		}
+		if(!line){
+			i++;
+	        switch (i) {
+	            case 1: ((Node) line1).setVisible(true);
+	            		break;
+	            case 2: ((Node) line2).setVisible(true);
+	                    break;
+	            case 3: ((Node) line3).setVisible(true);
+	                    break;
+	            case 4: ((Node) line4).setVisible(true);
+	                    break;
+	            case 5: line5.setVisible(true);
+	                    break;
+	            case 6: ((Node) line6).setVisible(true);
+	                    break;
+	            case 7:	((Node) line7).setVisible(true);
+	                    break;
+	            case 8: ((Node) line8).setVisible(true);
+	                    break;
+	            case 9: ((Node) line9).setVisible(true);
+	                    break;
+	            case 10:((Node) line10).setVisible(true);
+	                    break;
+	        }
+	        
+			k--;
+			if(k==0){
+				label2.setText("You are dead");
+				
+				label1.setText(word);
+				
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("Restart");
+				alert.setHeaderText("You losse! Do you want to Restart?");
+				alert.setContentText("The word was: "+ word);
+	
+				ButtonType buttonTypeOne = new ButtonType("YES");
+				ButtonType buttonTypeTwo = new ButtonType("NO");
+	
+				alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
+	
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == buttonTypeOne){
+				    //restart Fehlt
+					
+					return;
+				} else if (result.get() == buttonTypeTwo) {
+					System.exit(0);
+				}
+			}else{
+				label2.setText("Trys Left: "+k);
+			}
+		}
+		line=false;
 	}
-	@FXML
-	public void restart(ActionEvent event){
-		
+
+	@Override
+	public void init(Stage stage) {
+		// TODO Auto-generated method stub
+		while(t<word.length()){
+			text = text + "-";
+			label1.setText(text);
+			t++;
+		}
 	}
 }
