@@ -37,32 +37,40 @@ public class Controller implements ViewController{
 	int t = 0;
 	String b = "";
 	String text = "";
+	public char[] array;
 	public String word;
 	public boolean line = false;
 	
+	@Override
+	public void init(Stage stage) {
+		// TODO Auto-generated method stub
+		array = new char[word.length()];
+        for(int p=0; p<word.length();p++){
+        	array[p] = '-';
+        }
+        String b = new String(array);
+		label1.setText(b);
+	}
 	public Controller(){
-		String[] words = {"writer", "that", "program"};
+		String[] words = {"writer", "that", "program","the","case",
+				"difficulty","deciphering","word","depends","titel",
+				"language","dictionaries","categorize","lexicon",
+				"vocabulary","into"};
         int random = new Random().nextInt(words.length);
         word = (words[random]);
-        System.out.println(word);
 	}
-	
-	@FXML
-	public void start(ActionEvent event){
-		label1.setText(text);
-		start.setVisible(false);
-		}
 	@FXML
 	public void pruefen(ActionEvent event){
 		Button btn = (Button) event.getSource();
 		b = btn.getText();
 		btn.setVisible(false);
-		
 		for(int p = 0; p < word.length(); p++){
 			if(b.charAt(0)+32 == word.charAt(p)){
-				System.out.println("yes");
 				line = true;
 				s++;
+				array[p] = b.charAt(0);
+				String b = new String(array);
+				label1.setText(b);
 			}
 		}
 		if(s==word.length()){
@@ -70,17 +78,12 @@ public class Controller implements ViewController{
 			alert.setTitle("Restart");
 			alert.setHeaderText("You won! Do you want to Restart?");
 			alert.setContentText("The word was: "+ word);
-
 			ButtonType buttonTypeOne = new ButtonType("YES");
 			ButtonType buttonTypeTwo = new ButtonType("NO");
-
 			alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == buttonTypeOne){
-			    //restart Fehlt
-				
-				return;
+				Start.loadScene("Main");
 			} else if (result.get() == buttonTypeTwo) {
 				System.exit(0);
 			}
@@ -88,48 +91,31 @@ public class Controller implements ViewController{
 		if(!line){
 			i++;
 	        switch (i) {
-	            case 1: ((Node) line1).setVisible(true);
-	            		break;
-	            case 2: ((Node) line2).setVisible(true);
-	                    break;
-	            case 3: ((Node) line3).setVisible(true);
-	                    break;
-	            case 4: ((Node) line4).setVisible(true);
-	                    break;
-	            case 5: line5.setVisible(true);
-	                    break;
-	            case 6: ((Node) line6).setVisible(true);
-	                    break;
-	            case 7:	((Node) line7).setVisible(true);
-	                    break;
-	            case 8: ((Node) line8).setVisible(true);
-	                    break;
-	            case 9: ((Node) line9).setVisible(true);
-	                    break;
-	            case 10:((Node) line10).setVisible(true);
-	                    break;
+	            case 1: ((Node) line1).setVisible(true); break;
+	            case 2: ((Node) line2).setVisible(true); break;
+	            case 3: ((Node) line3).setVisible(true); break;
+	            case 4: ((Node) line4).setVisible(true); break;
+	            case 5: line5.setVisible(true);break;
+	            case 6: ((Node) line6).setVisible(true); break;
+	            case 7:	((Node) line7).setVisible(true); break;
+	            case 8: ((Node) line8).setVisible(true); break;
+	            case 9: ((Node) line9).setVisible(true); break;
+	            case 10:((Node) line10).setVisible(true); break;
 	        }
-	        
 			k--;
 			if(k==0){
 				label2.setText("You are dead");
-				
 				label1.setText(word);
-				
 				Alert alert = new Alert(AlertType.CONFIRMATION);
 				alert.setTitle("Restart");
 				alert.setHeaderText("You losse! Do you want to Restart?");
 				alert.setContentText("The word was: "+ word);
-	
 				ButtonType buttonTypeOne = new ButtonType("YES");
 				ButtonType buttonTypeTwo = new ButtonType("NO");
-	
 				alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-	
 				Optional<ButtonType> result = alert.showAndWait();
 				if (result.get() == buttonTypeOne){
-				    //restart Fehlt
-					
+					Start.loadScene("Main");
 					return;
 				} else if (result.get() == buttonTypeTwo) {
 					System.exit(0);
@@ -139,15 +125,5 @@ public class Controller implements ViewController{
 			}
 		}
 		line=false;
-	}
-
-	@Override
-	public void init(Stage stage) {
-		// TODO Auto-generated method stub
-		while(t<word.length()){
-			text = text + "-";
-			label1.setText(text);
-			t++;
-		}
 	}
 }
