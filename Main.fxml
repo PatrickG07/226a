@@ -8,25 +8,25 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="453.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ch.P1.Controller">
+<AnchorPane id="AnchorPane" depthTest="INHERIT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="317.0" prefWidth="424.0" snapToPixel="true" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ch.P1.Controller">
   <children>
-    <Line fx:id="line1" endX="30.0" endY="1.0" layoutX="140.0" layoutY="221.0" startX="-100.0" visible="false" />
-    <Line fx:id="line2" endX="-89.0" endY="-92.0" layoutX="188.0" layoutY="131.0" startX="-88.0" startY="90.0" visible="false" />
-    <Line fx:id="line3" endX="0.0" endY="0.0" layoutX="199.0" layoutY="40.0" startX="-100.0" visible="false" />
-    <Line fx:id="line4" endX="-89.0" endY="-44.0" layoutX="287.0" layoutY="85.0" startX="-89.0" startY="-20.0" visible="false" />
-    <Circle fx:id="line5" fill="WHITE" layoutX="198.0" layoutY="81.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-    <Line fx:id="line6" endX="-89.0" endY="20.0" layoutX="288.0" layoutY="75.0" startX="-88.0" startY="90.0" visible="false" />
-    <Line fx:id="line7" endX="-89.0" endY="-92.0" layoutX="289.0" layoutY="254.0" startX="-68.0" startY="-55.0" visible="false" />
-    <Line fx:id="line8" endX="-51.0" endY="-92.0" layoutX="250.0" layoutY="253.0" startX="-68.0" startY="-55.0" visible="false" />
-    <Line fx:id="line9" endX="-89.0" endY="-92.0" layoutX="289.0" layoutY="223.0" startX="-71.0" startY="-126.0" visible="false" />
-    <Line fx:id="line10" endX="-51.0" endY="-92.0" layoutX="250.0" layoutY="222.0" startX="-67.0" startY="-121.0" visible="false" />
-    <Label fx:id="label1" layoutX="114.0" layoutY="314.0" text="Label">
+    <Line fx:id="line1" endX="30.0" endY="1.0" layoutX="168.0" layoutY="209.0" startX="-100.0" visible="false" />
+    <Line fx:id="line2" endX="-89.0" endY="-92.0" layoutX="216.0" layoutY="119.0" startX="-88.0" startY="90.0" visible="false" />
+    <Line fx:id="line3" endX="0.0" endY="0.0" layoutX="227.0" layoutY="28.0" startX="-100.0" visible="false" />
+    <Line fx:id="line4" endX="-89.0" endY="-44.0" layoutX="315.0" layoutY="73.0" startX="-89.0" startY="-20.0" visible="false" />
+    <Circle fx:id="line5" fill="WHITE" layoutX="226.0" layoutY="69.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+    <Line fx:id="line6" endX="-89.0" endY="20.0" layoutX="316.0" layoutY="63.0" startX="-88.0" startY="90.0" visible="false" />
+    <Line fx:id="line7" endX="-89.0" endY="-92.0" layoutX="317.0" layoutY="242.0" startX="-68.0" startY="-55.0" visible="false" />
+    <Line fx:id="line8" endX="-51.0" endY="-92.0" layoutX="278.0" layoutY="241.0" startX="-68.0" startY="-55.0" visible="false" />
+    <Line fx:id="line9" endX="-89.0" endY="-92.0" layoutX="317.0" layoutY="211.0" startX="-71.0" startY="-126.0" visible="false" />
+    <Line fx:id="line10" endX="-51.0" endY="-92.0" layoutX="278.0" layoutY="210.0" startX="-67.0" startY="-121.0" visible="false" />
+    <Label fx:id="label1" layoutX="136.0" layoutY="212.0" text="Label">
       <font>
         <Font size="30.0" />
       </font>
     </Label>
-    <Label fx:id="label2" layoutX="28.0" layoutY="338.0" text="Label" />
-    <GridPane id="GridPane" layoutX="27.0" layoutY="359.0" maxHeight="40.0" maxWidth="480.0" prefHeight="-1.0">
+    <Label fx:id="label2" layoutX="27.0" layoutY="236.0" text="Trys Left: 10" />
+    <GridPane id="GridPane" layoutX="26.0" layoutY="257.0" maxHeight="80.0" maxWidth="480.0" prefHeight="-1.0">
       <children>
         <Button id="new" maxHeight="40.0" maxWidth="40.0" mnemonicParsing="false" onAction="#pruefen" text="A" textFill="BLACK" visible="true" GridPane.columnIndex="0" GridPane.rowIndex="0" />
         <Button id="new" maxHeight="40.0" maxWidth="40.0" mnemonicParsing="false" onAction="#pruefen" text="B" textFill="BLACK" visible="true" GridPane.columnIndex="1" GridPane.rowIndex="0" />
@@ -75,6 +75,5 @@
         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
-    <Button fx:id="start" layoutX="358.0" layoutY="330.0" mnemonicParsing="false" onAction="#start" text="Start" />
   </children>
 </AnchorPane>
